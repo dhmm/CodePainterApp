@@ -47,7 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CodeManager.cs" />
+    <Compile Include="Colors.cs" />
+    <Compile Include="Command.cs" />
+    <Compile Include="CommandType.cs" />
     <Compile Include="DrawedPoint.cs" />
+    <Compile Include="DrawedPointsTable.cs" />
     <Compile Include="Drawer.cs">
       <SubType>UserControl</SubType>
     </Compile>
