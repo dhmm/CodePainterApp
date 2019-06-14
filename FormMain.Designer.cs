@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.rtxtCode = new System.Windows.Forms.RichTextBox();
             this.btnRun = new System.Windows.Forms.Button();
             this.pnlArena = new System.Windows.Forms.Panel();
@@ -36,7 +37,6 @@
             this.pnlContainer = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
             this.rtxtDebug = new System.Windows.Forms.RichTextBox();
             this.drawer = new CodePainterApp.Drawer();
             this.pnlArena.SuspendLayout();
@@ -59,11 +59,13 @@
             // 
             // btnRun
             // 
-            this.btnRun.Location = new System.Drawing.Point(12, 21);
+            this.btnRun.Image = ((System.Drawing.Image)(resources.GetObject("btnRun.Image")));
+            this.btnRun.Location = new System.Drawing.Point(12, 2);
             this.btnRun.Name = "btnRun";
-            this.btnRun.Size = new System.Drawing.Size(72, 24);
+            this.btnRun.Size = new System.Drawing.Size(116, 43);
             this.btnRun.TabIndex = 1;
             this.btnRun.Text = "Run Code";
+            this.btnRun.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnRun.UseVisualStyleBackColor = true;
             this.btnRun.Click += new System.EventHandler(this.btnRun_Click);
             // 
@@ -79,21 +81,25 @@
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(99, 21);
+            this.btnClear.Image = ((System.Drawing.Image)(resources.GetObject("btnClear.Image")));
+            this.btnClear.Location = new System.Drawing.Point(134, 2);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(72, 24);
+            this.btnClear.Size = new System.Drawing.Size(113, 43);
             this.btnClear.TabIndex = 3;
             this.btnClear.Text = "Clear Code";
+            this.btnClear.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // btnClearArena
             // 
-            this.btnClearArena.Location = new System.Drawing.Point(384, 21);
+            this.btnClearArena.Image = ((System.Drawing.Image)(resources.GetObject("btnClearArena.Image")));
+            this.btnClearArena.Location = new System.Drawing.Point(384, 2);
             this.btnClearArena.Name = "btnClearArena";
-            this.btnClearArena.Size = new System.Drawing.Size(72, 24);
+            this.btnClearArena.Size = new System.Drawing.Size(131, 43);
             this.btnClearArena.TabIndex = 4;
             this.btnClearArena.Text = "Clear Arena";
+            this.btnClearArena.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnClearArena.UseVisualStyleBackColor = true;
             this.btnClearArena.Click += new System.EventHandler(this.btnClearArena_Click);
             // 
@@ -126,15 +132,6 @@
             this.panel1.Size = new System.Drawing.Size(200, 20);
             this.panel1.TabIndex = 3;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(915, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Tests";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // rtxtDebug
             // 
             this.rtxtDebug.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
@@ -164,14 +161,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1082, 725);
             this.Controls.Add(this.rtxtDebug);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.pnlContainer);
             this.Controls.Add(this.btnClearArena);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnRun);
             this.Controls.Add(this.rtxtCode);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormMain";
-            this.Text = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "CodePainter";
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.pnlArena.ResumeLayout(false);
             this.pnlContainer.ResumeLayout(false);
@@ -189,7 +187,6 @@
         private System.Windows.Forms.Panel pnlContainer;
         private System.Windows.Forms.Panel panel1;
         private Drawer drawer;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.RichTextBox rtxtDebug;
     }
