@@ -59,5 +59,23 @@ namespace CodePainterApp
                 }
             }
         }
+
+        internal void ClearArena(Graphics g)
+        {
+            if (this.DrawedPoints != null)
+            {
+                for (int x = 0; x < PointsInWidth; x++)
+                {
+                    for (int y = 0; y < PointsInHeight; y++)
+                    {
+                        if (this[x, y] != null)
+                        {
+                            //this[x, y].ReDraw(g);
+                            this[x, y].Clear(g);
+                        }
+                    }
+                }
+            }
+        }
     }
 }

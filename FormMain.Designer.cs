@@ -49,7 +49,7 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.rtxtCode.BackColor = System.Drawing.Color.Black;
             this.rtxtCode.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rtxtCode.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtxtCode.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.rtxtCode.ForeColor = System.Drawing.Color.White;
             this.rtxtCode.Location = new System.Drawing.Point(12, 51);
             this.rtxtCode.Name = "rtxtCode";
@@ -95,6 +95,7 @@
             this.btnClearArena.TabIndex = 4;
             this.btnClearArena.Text = "Clear Arena";
             this.btnClearArena.UseVisualStyleBackColor = true;
+            this.btnClearArena.Click += new System.EventHandler(this.btnClearArena_Click);
             // 
             // pnlContainer
             // 
@@ -136,8 +137,7 @@
             // 
             // rtxtDebug
             // 
-            this.rtxtDebug.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.rtxtDebug.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtxtDebug.BackColor = System.Drawing.Color.Black;
             this.rtxtDebug.BorderStyle = System.Windows.Forms.BorderStyle.None;

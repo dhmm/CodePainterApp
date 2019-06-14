@@ -56,7 +56,17 @@ namespace CodePainterApp
 
         private void btnClear_Click(object sender, EventArgs e)
         {
+            this.rtxtCode.Clear();
+            CodeManager = new CodeManager(this.drawer);
+        }
 
+        private void btnClearArena_Click(object sender, EventArgs e)
+        {
+            DrawedPointsTable.ClearArena(Graphics);
+            DrawedPointsTable = new DrawedPointsTable(1200, 1200, 20, 20);
+            drawer.InitializeDrawer(pnlArena, DrawedPointsTable, 20, 20, 1200, 1200);
+            drawer.Top = 0;
+            drawer.Left = 0;      
         }
     }
 }

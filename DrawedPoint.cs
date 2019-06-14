@@ -25,14 +25,11 @@ namespace CodePainterApp
             g.FillRectangle(sb, Point.X, Point.Y, Size.Width, Size.Height);
             Debug.WriteLine("Point X = " + Point.X + " Y = " + Point.Y + " Color = "+this.Color + " Size = ( "+Size.Width+" x "+Size.Height+" ) ");
         }
-       /* public void ReDraw(Graphics g)
+       public void Clear(Graphics g)
         {
-            Pen p = new Pen(Color.FromArgb(250, 40, 40, 40));
-            g.DrawLine(p, this.Point,new Point(this.Point.X+this.Size.Width , this.Point.Y+this.Size.Height));
-
-            SolidBrush sb = new SolidBrush(this.Color);
-            g.FillRectangle(sb, Point.X+1, Point.Y+1, Size.Width-1, Size.Height-1);
-            Debug.WriteLine("Point X = " + Point.X+1 + " Y = " + Point.Y+1 + " Color = " + this.Color + " Size = ( " + Size.Width + " x " + Size.Height + " ) ");
-        }*/
+            SolidBrush sb = new SolidBrush(Color.DarkSlateGray);
+            g.FillRectangle(sb, Point.X, Point.Y, Size.Width, Size.Height);
+            Debug.WriteLine("Point X = " + Point.X + " Y = " + Point.Y + " Color = " + this.Color + " Size = ( " + Size.Width + " x " + Size.Height + " ) ");
+        }
     }
 }

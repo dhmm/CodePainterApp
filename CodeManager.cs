@@ -74,6 +74,7 @@ namespace CodePainterApp
             }
         }
 
+
         private void ExecuteCommand(Command command)
         {
             switch (command.CommandType)
