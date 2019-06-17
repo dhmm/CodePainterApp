@@ -44,20 +44,29 @@ namespace CodePainterApp
             this.Graphics  = pnlArena.CreateGraphics();
             DrawedPointsTable = new DrawedPointsTable(1200,1200, 20, 20);
             drawer.InitializeDrawer(pnlArena, DrawedPointsTable, 20, 20, 1200, 1200);
-            CodeManager = new CodeManager(this.drawer);
+            CodeManager = new CodeManager(this.drawer , this.rtxtLogShower);
         }
 
         private void btnRun_Click(object sender, EventArgs e)
         {
-            this.rtxtCode.Text = this.rtxtCode.Text.ToUpper();
-            Application.DoEvents();
-            CodeManager.RunCode(rtxtCode.Text);
+            if (rtxtCode.Text != string.Empty)
+            {
+                btnRun.Enabled = false;
+                btnClear.Enabled = false;
+                btnClearArena.Enabled = false;
+                this.rtxtCode.Text = this.rtxtCode.Text.ToUpper();
+                Application.DoEvents();
+                CodeManager.RunCode(rtxtCode);
+                btnRun.Enabled = true;
+                btnClear.Enabled = true;
+                btnClearArena.Enabled = true;
+            }
         }
 
         private void btnClear_Click(object sender, EventArgs e)
         {
             this.rtxtCode.Clear();
-            CodeManager = new CodeManager(this.drawer);
+            CodeManager = new CodeManager(this.drawer,rtxtLogShower);
         }
 
         private void btnClearArena_Click(object sender, EventArgs e)

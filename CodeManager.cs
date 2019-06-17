@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 
 namespace CodePainterApp
 {
@@ -11,45 +13,71 @@ namespace CodePainterApp
         public string Error = "";
 
         Drawer Drawer = null;
+        RichTextBox LogShower = null;
 
         bool RepeatCommandActive = false;
         Dictionary<int, Command> RepeatCommands = null;
         int RepeatCount = -1;
+        bool ExecutingRepeat = true;
+        int RepeatStartLine = -1;
+        int RepeatErrorCodeLine = -1;
 
-        public CodeManager(Drawer drawer)
+        public CodeManager(Drawer drawer , RichTextBox errorLogger)
         {
             Drawer = drawer;
+            LogShower = errorLogger;
         }
-        public void RunCode(string codeLines)
+        public void RunCode(RichTextBox rtxtCode)
         {
             ErrorLine = -1;
             Error = "";
+            RepeatCommandActive = false;
+            RepeatCommands = null;
+            RepeatCount = -1;
+            ExecutingRepeat = true;
+            RepeatStartLine = -1;
+            RepeatErrorCodeLine = -1;
+            LogShower.Clear();
 
-            string[] lines = codeLines.Split();
+
+            string[] lines = rtxtCode.Text.Split();
 
             int codeLine = 1;
             foreach(string line in lines)
             {
                 try
                 {
-                    ExecuteLine(line);
+                    ExecuteLine(line , codeLine);
                 }
                 catch(Exception exc)
                 {
                     ErrorLine = codeLine;
                     Error = exc.Message.ToString();
+                    if(ExecutingRepeat)
+                    {
+                        ErrorLine = RepeatStartLine + RepeatErrorCodeLine;
+                    }
+                    LogShower.Text += "Line "+ ErrorLine + " : " + Error;
+
+                    int firstcharindex = rtxtCode.GetFirstCharIndexFromLine(ErrorLine);
+                    int currentline = rtxtCode.GetLineFromCharIndex(firstcharindex);
+                    string currentlinetext = rtxtCode.Lines[currentline];
+                    rtxtCode.Select(firstcharindex, currentlinetext.Length);
+
+
+        
                     return;
                 }
                 codeLine++;
             }
         }
 
-        private void ExecuteLine(string line)
+        private void ExecuteLine(string line ,int codeLine)
         {
             Command command = ReadCommandLine(line);
             if (RepeatCommandActive == false)
             {
-                this.ExecuteCommand(command);
+                this.ExecuteCommand(command , codeLine);
             } 
             else
             {
@@ -59,23 +87,34 @@ namespace CodePainterApp
                     RepeatCommands.Add(key, command);
                 }
                 else
-                { 
-                    for(int repeat=1;repeat<=RepeatCount;repeat++)
-                    {
+                {                    
+                    ExecutingRepeat = true;
+                    for (int repeat=1;repeat<=RepeatCount;repeat++)
+                    {                        
                         for (int repeatCodeLine = 1; repeatCodeLine <= RepeatCommands.Count(); repeatCodeLine++)
                         {
-                            this.ExecuteCommand(RepeatCommands[repeatCodeLine]);
+                            try
+                            {
+                                this.ExecuteCommand(RepeatCommands[repeatCodeLine]);
+                            }
+                            catch(Exception ex)
+                            {
+                                RepeatErrorCodeLine = repeatCodeLine;
+                                throw new Exception(ex.Message);                               
+                            }
                         }
                     }
+                    ExecutingRepeat = false;
                     RepeatCommandActive = false;
                     RepeatCommands = null;
                     RepeatCount = -1;
+                    RepeatStartLine = -1;
                 }                
             }
         }
 
 
-        private void ExecuteCommand(Command command)
+        private void ExecuteCommand(Command command , int codeLine = -1)
         {
             switch (command.CommandType)
             {
@@ -134,12 +173,15 @@ namespace CodePainterApp
                     break;
                 case CommandType.REPEAT:
                     RepeatCommandActive = true;
+                    
+                        RepeatStartLine = codeLine;
+                    
                     RepeatCommands = new Dictionary<int, Command>();
                     RepeatCount = command.GetParameterAsInteger();
                     break;
                 case CommandType.UNKNOWN:
                     #region UNKNOWN
-                    throw new Exception("I cant undestand the command ");
+                    throw new Exception("Unknown command , please see the available command list");
                     #endregion
                     break;
             }
@@ -152,20 +194,31 @@ namespace CodePainterApp
             {
                 int indexOfLeftParanthesis = line.IndexOf("(");
                 int indexOfRightParanthesis = line.IndexOf(")");
-                //Command without parameter
-                if ( (indexOfRightParanthesis - indexOfLeftParanthesis) == 1)
+                if (indexOfRightParanthesis > -1)
                 {
-                    string commandName = line.Substring(0, indexOfLeftParanthesis);
-                    command.Resolve(commandName);
+                    //Command without parameter
+                    if ((indexOfRightParanthesis - indexOfLeftParanthesis) == 1)
+                    {
+                        string commandName = line.Substring(0, indexOfLeftParanthesis);
+                        command.Resolve(commandName);
+                    }
+                    //Command with parameter
+                    else
+                    {
+                        string commandName = line.Substring(0, indexOfLeftParanthesis);
+                        string parameter = line.Substring(indexOfLeftParanthesis + 1, (indexOfRightParanthesis - indexOfLeftParanthesis) - 1);
+                        command.Resolve(commandName, parameter);
+                    }
                 }
-                //Command with parameter
                 else
                 {
-                    string commandName = line.Substring(0, indexOfLeftParanthesis);
-                    string parameter = line.Substring(indexOfLeftParanthesis +1, (indexOfRightParanthesis - indexOfLeftParanthesis) -1);
-                    command.Resolve(commandName , parameter);
+                    throw new Exception("Missing right paranthesis ");
                 }
-            }                        
+            }   
+            else
+            {
+                throw new Exception("Wrong command. All comand must have paranthesis '()'");
+            }                     
             return command;
         }
         

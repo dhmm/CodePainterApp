@@ -31,32 +31,36 @@ namespace CodePainterApp
         const int HEIGHT = 5;
         const int HIGH_LOCATION = 15;
         const int LOW_LOCATION = 0;
+
+        private void HideAllDirectionPCts()
+        {
+            pctDown.Hide();
+            pctUp.Hide();
+            pctRight.Hide();
+            pctLeft.Hide();
+        }
         public void TurnRight()
         {
-            RotateVertical();
-            pnlHead.Left = HIGH_LOCATION;
-            pnlHead.Top = LOW_LOCATION;
+            HideAllDirectionPCts();
+            pctRight.Show();
             Direction = DIRECTION.RIGHT;
         }
         public void TurnDown()
         {
-            RotateHorizontal();
-            pnlHead.Left = LOW_LOCATION;
-            pnlHead.Top = HIGH_LOCATION;
+            HideAllDirectionPCts();
+            pctDown.Show();
             Direction = DIRECTION.DOWN;
         }
         public void TurnLeft()
         {
-            RotateVertical();
-            pnlHead.Left = LOW_LOCATION;
-            pnlHead.Top = LOW_LOCATION;
+            HideAllDirectionPCts();
+            pctLeft.Show();
             Direction = DIRECTION.LEFT;
         }
         public void TurnUp()
         {
-            RotateHorizontal();
-            pnlHead.Left = LOW_LOCATION;
-            pnlHead.Top = LOW_LOCATION;
+            HideAllDirectionPCts();
+            pctUp.Show();
             Direction = DIRECTION.UP;
         }
         public void MoveDrawer()
@@ -129,16 +133,7 @@ namespace CodePainterApp
                 }
             }            
         }
-        private void RotateHorizontal()
-        {
-            pnlHead.Width = WIDTH;
-            pnlHead.Height = HEIGHT;
-        }
-        private void RotateVertical()
-        {
-            pnlHead.Width = HEIGHT;
-            pnlHead.Height = WIDTH;
-        }
+
         public void EnableDrawing()
         {
             Draw = true;

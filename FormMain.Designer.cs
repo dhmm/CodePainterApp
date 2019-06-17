@@ -37,7 +37,7 @@
             this.pnlContainer = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.rtxtDebug = new System.Windows.Forms.RichTextBox();
+            this.rtxtLogShower = new System.Windows.Forms.RichTextBox();
             this.drawer = new CodePainterApp.Drawer();
             this.pnlArena.SuspendLayout();
             this.pnlContainer.SuspendLayout();
@@ -132,35 +132,35 @@
             this.panel1.Size = new System.Drawing.Size(200, 20);
             this.panel1.TabIndex = 3;
             // 
-            // rtxtDebug
+            // rtxtLogShower
             // 
-            this.rtxtDebug.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.rtxtLogShower.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.rtxtDebug.BackColor = System.Drawing.Color.Black;
-            this.rtxtDebug.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rtxtDebug.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtxtDebug.ForeColor = System.Drawing.Color.White;
-            this.rtxtDebug.Location = new System.Drawing.Point(12, 629);
-            this.rtxtDebug.Name = "rtxtDebug";
-            this.rtxtDebug.Size = new System.Drawing.Size(1058, 84);
-            this.rtxtDebug.TabIndex = 8;
-            this.rtxtDebug.Text = "";
+            this.rtxtLogShower.BackColor = System.Drawing.Color.Black;
+            this.rtxtLogShower.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rtxtLogShower.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtxtLogShower.ForeColor = System.Drawing.Color.White;
+            this.rtxtLogShower.Location = new System.Drawing.Point(12, 629);
+            this.rtxtLogShower.Name = "rtxtLogShower";
+            this.rtxtLogShower.Size = new System.Drawing.Size(1058, 84);
+            this.rtxtLogShower.TabIndex = 8;
+            this.rtxtLogShower.Text = "";
             // 
             // drawer
             // 
             this.drawer.Arena = null;
-            this.drawer.BackColor = System.Drawing.Color.Maroon;
+            this.drawer.BackColor = System.Drawing.Color.Transparent;
             this.drawer.Location = new System.Drawing.Point(0, 0);
             this.drawer.Name = "drawer";
             this.drawer.Size = new System.Drawing.Size(20, 20);
-            this.drawer.TabIndex = 0;
+            this.drawer.TabIndex = 1;
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1082, 725);
-            this.Controls.Add(this.rtxtDebug);
+            this.Controls.Add(this.rtxtLogShower);
             this.Controls.Add(this.pnlContainer);
             this.Controls.Add(this.btnClearArena);
             this.Controls.Add(this.btnClear);
@@ -186,9 +186,9 @@
         private System.Windows.Forms.Button btnClearArena;
         private System.Windows.Forms.Panel pnlContainer;
         private System.Windows.Forms.Panel panel1;
-        private Drawer drawer;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.RichTextBox rtxtDebug;
+        private System.Windows.Forms.RichTextBox rtxtLogShower;
+        private Drawer drawer;
     }
 }
 
