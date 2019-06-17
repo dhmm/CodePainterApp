@@ -39,8 +39,13 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.rtxtLogShower = new System.Windows.Forms.RichTextBox();
             this.drawer = new CodePainterApp.Drawer();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuAvaialableCommands = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlArena.SuspendLayout();
             this.pnlContainer.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // rtxtCode
@@ -51,16 +56,16 @@
             this.rtxtCode.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.rtxtCode.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.rtxtCode.ForeColor = System.Drawing.Color.White;
-            this.rtxtCode.Location = new System.Drawing.Point(12, 51);
+            this.rtxtCode.Location = new System.Drawing.Point(12, 71);
             this.rtxtCode.Name = "rtxtCode";
-            this.rtxtCode.Size = new System.Drawing.Size(366, 572);
+            this.rtxtCode.Size = new System.Drawing.Size(366, 552);
             this.rtxtCode.TabIndex = 0;
             this.rtxtCode.Text = "REPEAT(5)\nDONTPAINT()\nGO()\nPAINT()\nGO()\nENDREPEAT()";
             // 
             // btnRun
             // 
             this.btnRun.Image = ((System.Drawing.Image)(resources.GetObject("btnRun.Image")));
-            this.btnRun.Location = new System.Drawing.Point(12, 2);
+            this.btnRun.Location = new System.Drawing.Point(12, 27);
             this.btnRun.Name = "btnRun";
             this.btnRun.Size = new System.Drawing.Size(116, 43);
             this.btnRun.TabIndex = 1;
@@ -82,7 +87,7 @@
             // btnClear
             // 
             this.btnClear.Image = ((System.Drawing.Image)(resources.GetObject("btnClear.Image")));
-            this.btnClear.Location = new System.Drawing.Point(134, 2);
+            this.btnClear.Location = new System.Drawing.Point(134, 27);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(113, 43);
             this.btnClear.TabIndex = 3;
@@ -94,7 +99,7 @@
             // btnClearArena
             // 
             this.btnClearArena.Image = ((System.Drawing.Image)(resources.GetObject("btnClearArena.Image")));
-            this.btnClearArena.Location = new System.Drawing.Point(384, 2);
+            this.btnClearArena.Location = new System.Drawing.Point(384, 27);
             this.btnClearArena.Name = "btnClearArena";
             this.btnClearArena.Size = new System.Drawing.Size(131, 43);
             this.btnClearArena.TabIndex = 4;
@@ -113,9 +118,9 @@
             this.pnlContainer.Controls.Add(this.panel2);
             this.pnlContainer.Controls.Add(this.panel1);
             this.pnlContainer.Controls.Add(this.pnlArena);
-            this.pnlContainer.Location = new System.Drawing.Point(384, 51);
+            this.pnlContainer.Location = new System.Drawing.Point(384, 71);
             this.pnlContainer.Name = "pnlContainer";
-            this.pnlContainer.Size = new System.Drawing.Size(697, 571);
+            this.pnlContainer.Size = new System.Drawing.Size(697, 551);
             this.pnlContainer.TabIndex = 6;
             // 
             // panel2
@@ -155,6 +160,38 @@
             this.drawer.Size = new System.Drawing.Size(20, 20);
             this.drawer.TabIndex = 1;
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem,
+            this.helpToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1082, 24);
+            this.menuStrip1.TabIndex = 9;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Text = "File";
+            // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuAvaialableCommands});
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.helpToolStripMenuItem.Text = "Help";
+            // 
+            // mnuAvaialableCommands
+            // 
+            this.mnuAvaialableCommands.Name = "mnuAvaialableCommands";
+            this.mnuAvaialableCommands.Size = new System.Drawing.Size(187, 22);
+            this.mnuAvaialableCommands.Text = "Available Commands";
+            this.mnuAvaialableCommands.Click += new System.EventHandler(this.mnuAvailableCommands_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -166,14 +203,19 @@
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnRun);
             this.Controls.Add(this.rtxtCode);
+            this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CodePainter";
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.pnlArena.ResumeLayout(false);
             this.pnlContainer.ResumeLayout(false);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -189,6 +231,10 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.RichTextBox rtxtLogShower;
         private Drawer drawer;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnuAvaialableCommands;
     }
 }
 

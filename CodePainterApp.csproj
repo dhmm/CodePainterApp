@@ -62,6 +62,12 @@
     <Compile Include="Drawer.Designer.cs">
       <DependentUpon>Drawer.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormCommands.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCommands.Designer.cs">
+      <DependentUpon>FormCommands.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,6 +78,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Drawer.resx">
       <DependentUpon>Drawer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCommands.resx">
+      <DependentUpon>FormCommands.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>

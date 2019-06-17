@@ -77,5 +77,11 @@ namespace CodePainterApp
             drawer.Top = 0;
             drawer.Left = 0;      
         }
+
+        private void mnuAvailableCommands_Click(object sender, EventArgs e)
+        {
+            FormCommands form = new FormCommands();
+            form.ShowDialog();
+        }
     }
 }
