@@ -4,6 +4,8 @@ A very simple tool where kids can draw basic things using programming commands a
 
 If you want to try the tools you can execute it directly from .exe file.
 
+![CodePainterAppScreenhot](https://raw.githubusercontent.com/dhmm/CodePainterApp/master/resources/screenshot.png)
+
 ### Available Commands
 1.GO
 Move 1 step
