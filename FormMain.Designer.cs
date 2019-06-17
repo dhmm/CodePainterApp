@@ -32,7 +32,6 @@
             this.rtxtCode = new System.Windows.Forms.RichTextBox();
             this.btnRun = new System.Windows.Forms.Button();
             this.pnlArena = new System.Windows.Forms.Panel();
-            this.drawer = new CodePainterApp.Drawer();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnClearArena = new System.Windows.Forms.Button();
             this.pnlContainer = new System.Windows.Forms.Panel();
@@ -44,6 +43,9 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuAvaialableCommands = new System.Windows.Forms.ToolStripMenuItem();
             this.abourToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuOpenFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuSaveFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.drawer = new CodePainterApp.Drawer();
             this.pnlArena.SuspendLayout();
             this.pnlContainer.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -84,15 +86,6 @@
             this.pnlArena.Size = new System.Drawing.Size(1201, 1201);
             this.pnlArena.TabIndex = 2;
             this.pnlArena.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlArena_Paint);
-            // 
-            // drawer
-            // 
-            this.drawer.Arena = null;
-            this.drawer.BackColor = System.Drawing.Color.Transparent;
-            this.drawer.Location = new System.Drawing.Point(0, 0);
-            this.drawer.Name = "drawer";
-            this.drawer.Size = new System.Drawing.Size(20, 20);
-            this.drawer.TabIndex = 1;
             // 
             // btnClear
             // 
@@ -174,6 +167,9 @@
             // 
             // fileToolStripMenuItem
             // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuOpenFile,
+            this.mnuSaveFile});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
@@ -190,16 +186,41 @@
             // mnuAvaialableCommands
             // 
             this.mnuAvaialableCommands.Name = "mnuAvaialableCommands";
-            this.mnuAvaialableCommands.Size = new System.Drawing.Size(187, 22);
+            this.mnuAvaialableCommands.ShortcutKeys = System.Windows.Forms.Keys.F1;
+            this.mnuAvaialableCommands.Size = new System.Drawing.Size(206, 22);
             this.mnuAvaialableCommands.Text = "Available Commands";
             this.mnuAvaialableCommands.Click += new System.EventHandler(this.mnuAvailableCommands_Click);
             // 
             // abourToolStripMenuItem
             // 
             this.abourToolStripMenuItem.Name = "abourToolStripMenuItem";
-            this.abourToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.abourToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F2;
+            this.abourToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
             this.abourToolStripMenuItem.Text = "About";
             this.abourToolStripMenuItem.Click += new System.EventHandler(this.abourToolStripMenuItem_Click);
+            // 
+            // mnuOpenFile
+            // 
+            this.mnuOpenFile.Name = "mnuOpenFile";
+            this.mnuOpenFile.ShortcutKeys = System.Windows.Forms.Keys.F3;
+            this.mnuOpenFile.Size = new System.Drawing.Size(152, 22);
+            this.mnuOpenFile.Text = "Open";
+            // 
+            // mnuSaveFile
+            // 
+            this.mnuSaveFile.Name = "mnuSaveFile";
+            this.mnuSaveFile.ShortcutKeys = System.Windows.Forms.Keys.F4;
+            this.mnuSaveFile.Size = new System.Drawing.Size(152, 22);
+            this.mnuSaveFile.Text = "Save";
+            // 
+            // drawer
+            // 
+            this.drawer.Arena = null;
+            this.drawer.BackColor = System.Drawing.Color.Transparent;
+            this.drawer.Location = new System.Drawing.Point(0, 0);
+            this.drawer.Name = "drawer";
+            this.drawer.Size = new System.Drawing.Size(20, 20);
+            this.drawer.TabIndex = 1;
             // 
             // FormMain
             // 
@@ -245,6 +266,8 @@
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mnuAvaialableCommands;
         private System.Windows.Forms.ToolStripMenuItem abourToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnuOpenFile;
+        private System.Windows.Forms.ToolStripMenuItem mnuSaveFile;
     }
 }
 
