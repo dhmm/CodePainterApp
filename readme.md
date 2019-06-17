@@ -2,7 +2,7 @@
 
 A very simple tool where kids can draw basic things using programming commands and they can see directly the result in an area. 
 
-If you want to try the tools you can execute it directly from .exe file.
+If you want to try the tool you can execute it directly from .exe file from the resources directory
 
 ![CodePainterAppScreenhot](https://raw.githubusercontent.com/dhmm/CodePainterApp/master/resources/screenshot.png)
 
