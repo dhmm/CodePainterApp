@@ -32,17 +32,18 @@
             this.rtxtCode = new System.Windows.Forms.RichTextBox();
             this.btnRun = new System.Windows.Forms.Button();
             this.pnlArena = new System.Windows.Forms.Panel();
+            this.drawer = new CodePainterApp.Drawer();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnClearArena = new System.Windows.Forms.Button();
             this.pnlContainer = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.rtxtLogShower = new System.Windows.Forms.RichTextBox();
-            this.drawer = new CodePainterApp.Drawer();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuAvaialableCommands = new System.Windows.Forms.ToolStripMenuItem();
+            this.abourToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlArena.SuspendLayout();
             this.pnlContainer.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -83,6 +84,15 @@
             this.pnlArena.Size = new System.Drawing.Size(1201, 1201);
             this.pnlArena.TabIndex = 2;
             this.pnlArena.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlArena_Paint);
+            // 
+            // drawer
+            // 
+            this.drawer.Arena = null;
+            this.drawer.BackColor = System.Drawing.Color.Transparent;
+            this.drawer.Location = new System.Drawing.Point(0, 0);
+            this.drawer.Name = "drawer";
+            this.drawer.Size = new System.Drawing.Size(20, 20);
+            this.drawer.TabIndex = 1;
             // 
             // btnClear
             // 
@@ -151,15 +161,6 @@
             this.rtxtLogShower.TabIndex = 8;
             this.rtxtLogShower.Text = "";
             // 
-            // drawer
-            // 
-            this.drawer.Arena = null;
-            this.drawer.BackColor = System.Drawing.Color.Transparent;
-            this.drawer.Location = new System.Drawing.Point(0, 0);
-            this.drawer.Name = "drawer";
-            this.drawer.Size = new System.Drawing.Size(20, 20);
-            this.drawer.TabIndex = 1;
-            // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -180,7 +181,8 @@
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuAvaialableCommands});
+            this.mnuAvaialableCommands,
+            this.abourToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem.Text = "Help";
@@ -191,6 +193,13 @@
             this.mnuAvaialableCommands.Size = new System.Drawing.Size(187, 22);
             this.mnuAvaialableCommands.Text = "Available Commands";
             this.mnuAvaialableCommands.Click += new System.EventHandler(this.mnuAvailableCommands_Click);
+            // 
+            // abourToolStripMenuItem
+            // 
+            this.abourToolStripMenuItem.Name = "abourToolStripMenuItem";
+            this.abourToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.abourToolStripMenuItem.Text = "About";
+            this.abourToolStripMenuItem.Click += new System.EventHandler(this.abourToolStripMenuItem_Click);
             // 
             // FormMain
             // 
@@ -235,6 +244,7 @@
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mnuAvaialableCommands;
+        private System.Windows.Forms.ToolStripMenuItem abourToolStripMenuItem;
     }
 }
 

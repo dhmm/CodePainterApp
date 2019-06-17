@@ -83,5 +83,11 @@ namespace CodePainterApp
             FormCommands form = new FormCommands();
             form.ShowDialog();
         }
+
+        private void abourToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormAbout form = new FormAbout();
+            form.ShowDialog();
+        }
     }
 }
