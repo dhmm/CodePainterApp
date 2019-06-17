@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,45 @@ namespace CodePainterApp
         Graphics Graphics = null;
         CodeManager CodeManager = null;
 
+
+        private void Run()
+        {
+            if (rtxtCode.Text != string.Empty)
+            {
+                btnRun.Enabled = false;
+                btnClear.Enabled = false;
+                btnClearArena.Enabled = false;
+                this.rtxtCode.Text = this.rtxtCode.Text.ToUpper();
+                Application.DoEvents();
+                CodeManager.RunCode(rtxtCode);
+                btnRun.Enabled = true;
+                btnClear.Enabled = true;
+                btnClearArena.Enabled = true;
+            }
+        }
+        private void ClearCode()
+        {
+            this.rtxtCode.Clear();
+            CodeManager = new CodeManager(this.drawer, rtxtLogShower);
+        }
+        private void ClearArena()
+        {
+            DrawedPointsTable.ClearArena(Graphics);
+            DrawedPointsTable = new DrawedPointsTable(1200, 1200, 20, 20);
+            drawer.InitializeDrawer(pnlArena, DrawedPointsTable, 20, 20, 1200, 1200);
+            drawer.Top = 0;
+            drawer.Left = 0;
+        }
+        private void ShowAvailableComands()
+        {
+            FormCommands form = new FormCommands();
+            form.ShowDialog();
+        }
+        private void ShowAbout()
+        {
+            FormAbout form = new FormAbout();
+            form.ShowDialog();
+        }
         public FormMain()
         {
             InitializeComponent();
@@ -49,45 +89,64 @@ namespace CodePainterApp
 
         private void btnRun_Click(object sender, EventArgs e)
         {
-            if (rtxtCode.Text != string.Empty)
-            {
-                btnRun.Enabled = false;
-                btnClear.Enabled = false;
-                btnClearArena.Enabled = false;
-                this.rtxtCode.Text = this.rtxtCode.Text.ToUpper();
-                Application.DoEvents();
-                CodeManager.RunCode(rtxtCode);
-                btnRun.Enabled = true;
-                btnClear.Enabled = true;
-                btnClearArena.Enabled = true;
-            }
+            Run();
         }
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-            this.rtxtCode.Clear();
-            CodeManager = new CodeManager(this.drawer,rtxtLogShower);
+            ClearCode();
         }
 
         private void btnClearArena_Click(object sender, EventArgs e)
         {
-            DrawedPointsTable.ClearArena(Graphics);
-            DrawedPointsTable = new DrawedPointsTable(1200, 1200, 20, 20);
-            drawer.InitializeDrawer(pnlArena, DrawedPointsTable, 20, 20, 1200, 1200);
-            drawer.Top = 0;
-            drawer.Left = 0;      
+            ClearArena();   
         }
 
         private void mnuAvailableCommands_Click(object sender, EventArgs e)
         {
-            FormCommands form = new FormCommands();
-            form.ShowDialog();
+            ShowAvailableComands();
         }
 
-        private void abourToolStripMenuItem_Click(object sender, EventArgs e)
+        private void mnuAbout_Click(object sender, EventArgs e)
         {
-            FormAbout form = new FormAbout();
-            form.ShowDialog();
+            ShowAbout();
+        }
+
+        private void mnuOpenFile_Click(object sender, EventArgs e)
+        {
+            if(openDialog.ShowDialog() == DialogResult.OK )
+            {
+                string fileText = null;
+                try
+                {
+                    fileText = File.ReadAllText(openDialog.FileName);
+                    ClearArena();
+                    ClearCode();
+                    rtxtCode.Text = fileText;
+                }
+                catch(Exception ex)
+                {
+                    rtxtLogShower.Text = ex.Message.ToString();
+                }
+            }
+        }
+
+        private void mnuSaveFile_Click(object sender, EventArgs e)
+        {
+            if (rtxtCode.Text != string.Empty)
+            {
+                if (saveDialog.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        File.AppendAllText(saveDialog.FileName, rtxtCode.Text);                        
+                    }
+                    catch (Exception ex)
+                    {
+                        rtxtLogShower.Text = ex.Message.ToString();
+                    }
+                }
+            }
         }
     }
 }

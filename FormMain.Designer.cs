@@ -40,11 +40,13 @@
             this.rtxtLogShower = new System.Windows.Forms.RichTextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuOpenFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuSaveFile = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuAvaialableCommands = new System.Windows.Forms.ToolStripMenuItem();
             this.abourToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuOpenFile = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuSaveFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.openDialog = new System.Windows.Forms.OpenFileDialog();
+            this.saveDialog = new System.Windows.Forms.SaveFileDialog();
             this.drawer = new CodePainterApp.Drawer();
             this.pnlArena.SuspendLayout();
             this.pnlContainer.SuspendLayout();
@@ -63,7 +65,7 @@
             this.rtxtCode.Name = "rtxtCode";
             this.rtxtCode.Size = new System.Drawing.Size(366, 552);
             this.rtxtCode.TabIndex = 0;
-            this.rtxtCode.Text = "REPEAT(5)\nDONTPAINT()\nGO()\nPAINT()\nGO()\nENDREPEAT()";
+            this.rtxtCode.Text = "GO(3)\nTURN(R)\nREPEAT(5)\nDONTPAINT()\nGO()\nPAINT()\nGO()\nENDREPEAT()";
             // 
             // btnRun
             // 
@@ -174,6 +176,22 @@
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
             // 
+            // mnuOpenFile
+            // 
+            this.mnuOpenFile.Name = "mnuOpenFile";
+            this.mnuOpenFile.ShortcutKeys = System.Windows.Forms.Keys.F3;
+            this.mnuOpenFile.Size = new System.Drawing.Size(122, 22);
+            this.mnuOpenFile.Text = "Open";
+            this.mnuOpenFile.Click += new System.EventHandler(this.mnuOpenFile_Click);
+            // 
+            // mnuSaveFile
+            // 
+            this.mnuSaveFile.Name = "mnuSaveFile";
+            this.mnuSaveFile.ShortcutKeys = System.Windows.Forms.Keys.F4;
+            this.mnuSaveFile.Size = new System.Drawing.Size(122, 22);
+            this.mnuSaveFile.Text = "Save";
+            this.mnuSaveFile.Click += new System.EventHandler(this.mnuSaveFile_Click);
+            // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -197,21 +215,16 @@
             this.abourToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F2;
             this.abourToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
             this.abourToolStripMenuItem.Text = "About";
-            this.abourToolStripMenuItem.Click += new System.EventHandler(this.abourToolStripMenuItem_Click);
+            this.abourToolStripMenuItem.Click += new System.EventHandler(this.mnuAbout_Click);
             // 
-            // mnuOpenFile
+            // openDialog
             // 
-            this.mnuOpenFile.Name = "mnuOpenFile";
-            this.mnuOpenFile.ShortcutKeys = System.Windows.Forms.Keys.F3;
-            this.mnuOpenFile.Size = new System.Drawing.Size(152, 22);
-            this.mnuOpenFile.Text = "Open";
+            this.openDialog.FileName = "openFileDialog1";
+            this.openDialog.Filter = "TextFile|*.txt";
             // 
-            // mnuSaveFile
+            // saveDialog
             // 
-            this.mnuSaveFile.Name = "mnuSaveFile";
-            this.mnuSaveFile.ShortcutKeys = System.Windows.Forms.Keys.F4;
-            this.mnuSaveFile.Size = new System.Drawing.Size(152, 22);
-            this.mnuSaveFile.Text = "Save";
+            this.saveDialog.Filter = "TextFile|*.txt";
             // 
             // drawer
             // 
@@ -268,6 +281,8 @@
         private System.Windows.Forms.ToolStripMenuItem abourToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mnuOpenFile;
         private System.Windows.Forms.ToolStripMenuItem mnuSaveFile;
+        private System.Windows.Forms.OpenFileDialog openDialog;
+        private System.Windows.Forms.SaveFileDialog saveDialog;
     }
 }
 
